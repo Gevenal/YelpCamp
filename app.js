@@ -163,8 +163,8 @@ app.use((err, req, res, next) => {
     res.status(status).render('error', { err });
 })
 
-
+const port = process.env.PORT || 3000;
 //调用listen()开启服务器
-app.listen(3000, () => {
-    console.log('3000 is working..');
+app.listen(port, () => {
+    console.log(`${port} is working..`);
 })
