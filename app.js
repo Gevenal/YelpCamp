@@ -27,7 +27,8 @@ const userRoutes = require('./routes/users')
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/review');
 
-const url = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+// const url = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+const url = 'mongodb://localhost:27017/yelp-camp';
 //set up the database;
 // mongoose.connect(dbUrl);
 mongoose.connect(url);
@@ -48,21 +49,21 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(mongoSanitize());
+// app.use(mongoSanitize());
 
 const secret = process.env.SECRET || 'alittlesecret'
 
-var store = new MongoDBStore({
-    mongoUrl: url,
-    secret: secret,
-    touchAfter: 24 * 60 * 60
-})
+// var store = new MongoDBStore({
+//     mongoUrl: url,
+//     secret: secret,
+//     touchAfter: 24 * 60 * 60
+// })
 
-store.on('error', function (e) {
-    console.log('session error', e);
-})
+// store.on('error', function (e) {
+//     console.log('session error', e);
+// })
 const sessionConfig = {
-    store: store,
+    // store: store,
     name: 'Hermes',
     secret: secret,
     resave: false,
